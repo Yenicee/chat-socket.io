@@ -56,3 +56,11 @@ socket.on('userConnected', data => {
         position: 'top-right'
     })
 });
+
+const button = document.getElementById("sendButton");
+button.addEventListener("click", () => {
+  if (chatBox.value.trim().length > 0) {
+    socket.emit("message", { user: user, message: chatBox.value });
+    chatBox.value = "";
+  }
+});
